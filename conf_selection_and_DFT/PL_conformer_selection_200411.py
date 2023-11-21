@@ -18,7 +18,7 @@ from rdkit import Chem,Geometry
 from rdkit.Chem import rdmolfiles, AllChem, rdMolAlign, rdmolops
 
 
-import openbabel
+from openbabel import openbabel
 obConversion = openbabel.OBConversion()
 obConversion.SetInAndOutFormats("xyz", "sdf")
 

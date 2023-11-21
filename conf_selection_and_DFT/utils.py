@@ -17,13 +17,19 @@ from multiprocessing import Pool
 from subprocess import run, PIPE
 
 # Define common paths
-main_kraken_dir    = Path('/uufs/chpc.utah.edu/common/home/u1209999/PL_workflow/new_org_use')
+main_kraken_dir    = Path('/u/ctser/kraken/conf_selection_and_DFT/PL_workflow/new_org_use')
+
+dft_results_dir    = Path('/u/ctser/kraken/conf_selection_and_DFT/PL_workflow/new_org_use/dft_results')
+
+selected_confs_dir = Path('/u/ctser/kraken/conf_selection_and_DFT/PL_workflow/new_org_use/selected_conformers')
+
+#main_kraken_dir    = Path('/uufs/chpc.utah.edu/common/home/u1209999/PL_workflow/new_org_use')
 #main_kraken_dir    = Path('/project/a/aspuru/passos/ligands_final_batch1_2020_02')
 
-dft_results_dir    = Path('/uufs/chpc.utah.edu/common/home/u1209999/PL_workflow/new_org_use/dft_results')
+#dft_results_dir    = Path('/uufs/chpc.utah.edu/common/home/u1209999/PL_workflow/new_org_use/dft_results')
 #dft_results_dir    = Path('/project/a/aspuru/passos/ligands_final_batch1_2020_02/dft_results')
 
-selected_confs_dir = Path('/uufs/chpc.utah.edu/common/home/u1209999/PL_workflow/new_org_use/selected_conformers')
+#selected_confs_dir = Path('/uufs/chpc.utah.edu/common/home/u1209999/PL_workflow/new_org_use/selected_conformers')
 #selected_confs_dir = Path('/project/a/aspuru/passos/ligands_final_batch1_2020_02/selected_conformers')
 
 #pascal_confs_dir   = Path('/scratch/a/aspuru/pascalf/toronto_ligands_reactions/ligands_final_batch1_2020_02/selected_conformers')

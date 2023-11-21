@@ -110,7 +110,8 @@ if __name__ == "__main__":
     print("   ---   Read settings")
     settings={"max_E":6.0,
               "max_p":0.1,
-              "OMP_NUM_THREADS":3,
+              "OMP_NUM_THREADS":48,
+              "use_scratch": True,
               "MKL_NUM_THREADS":2,
               "dummy_distance":1.5,
               "remove_scratch": True,

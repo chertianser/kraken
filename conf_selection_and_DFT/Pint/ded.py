@@ -10,8 +10,12 @@ import matplotlib.pyplot as plt
 
 # Define external program directories
 # These paths need to be adjusted!
-dftd3 = pl.Path("/uufs/chpc.utah.edu/common/home/u1209999/PL_workflow/new_org_use/Pint/dftd3")
-dftd4 = pl.Path("/uufs/chpc.utah.edu/common/home/u1209999/PL_workflow/new_org_use/Pint/dftd4")
+#dftd3 = pl.Path("/uufs/chpc.utah.edu/common/home/u1209999/PL_workflow/new_org_use/Pint/dftd3")
+#dftd4 = pl.Path("/uufs/chpc.utah.edu/common/home/u1209999/PL_workflow/new_org_use/Pint/dftd4")
+dftd3 = "dftd3"
+dftd4 = "dftd4"
+#dftd3 = pl.Path("s-dftd3")
+#dftd4 = pl.Path("dftd4")
 cwd = pl.Path.cwd()
 
 # Define constants

@@ -12,7 +12,6 @@ Pintresults = ["Pint_P_int","Pint_dP","Pint_P_min","Pint_P_max","volume","surfac
 
 command = 'Multiwfn'
 
-
 def run_Multiwfn(wd,name,ext):
     inputargs = "12\n2\n-2\n3\n0.25\n0\n7\nq\n"
     multiwfn = subprocess.run(f"{command} {name}{ext}",stdout=subprocess.PIPE, stderr=subprocess.PIPE,encoding="ascii",shell=True,input=inputargs,cwd=wd)
@@ -43,6 +42,7 @@ def run_Multiwfn_win(wd,name,ext):
 def run_Multiwfn_win_promol(wd,name):
     inputargs = "5\n-1\n1\n3\n2\n0\n12\n2\n-2\n1\n1\n0.00174\n3\n0.25\n0\n7\nq\n"
     multiwfn = subprocess.run(f"{command} {name}.xyz",stdout=subprocess.PIPE, stderr=subprocess.PIPE,encoding="ascii",shell=True,input=inputargs,cwd=wd)
+    #multiwfn = subprocess.run(f"{command} {name}.xyz",encoding="ascii",shell=True,input=inputargs,cwd=wd)
     with open(wd/(f"{name}_Multiwfn_out.txt"),"w") as f:
         f.write(multiwfn.stdout)
     with open(wd/(f"{name}_Multiwfn_err.txt"),"w") as f:
@@ -119,8 +119,10 @@ def P_int_main(name="",directory="./",disp = "d3",promol=False):
                 os.stat(wd/"atomwfn")
             except:
                 os.mkdir(wd/"atomwfn")
-                atomwfn_orig = pl.Path("/uufs/chpc.utah.edu/common/home/u1209999/PL_workflow/new_org_use/Pint/Multiwfn_3.7_bin_Linux_noGUI/examples/atomwfn")
-                [shutil.copyfile(atomwfn_orig/aof,wd/"atomwfn"/aof) for aof in os.listdir(atomwfn_orig)]
+                atomwfn_orig = pl.Path("/opt/Multiwfn/3.7/examples/atomwfn")
+                #[shutil.copyfile(atomwfn_orig/aof,wd/"atomwfn"/aof) for aof in os.listdir(atomwfn_orig)]
+                for aof in os.listdir(atomwfn_orig):
+                    shutil.copyfile(atomwfn_orig/aof,wd/"atomwfn"/aof)
             run_Multiwfn_win_promol(wd,name)
 
         else:
@@ -145,7 +147,7 @@ def P_int_main(name="",directory="./",disp = "d3",promol=False):
     try:
         os.stat(wd/(f"{name}_ded_{disp}.txt"))
     except:
-        ded_path = '/uufs/chpc.utah.edu/common/home/u1209999/PL_workflow/new_org_use/Pint'
+        ded_path = '/u/ctser/kraken/conf_selection_and_DFT/Pint'
         t = subprocess.run(f"python {ded_path}/ded.py ./{name}.xyz ./{name}_vtx.txt --charge 0 --disp {disp}",cwd=wd,shell=True)
         
     # read results

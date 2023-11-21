@@ -245,7 +245,7 @@ def morfeus_properties(elements,coordinates,confdata):
     if "sterimol_B1" not in confdata.keys():
         # Sterimol
         # for Sterimol values matching Rob Paton's implementation:
-        patonradii = morfeus.helpers.get_radii(elements, radii_type="bondi")
+        patonradii = morfeus.utils.get_radii(elements, radii_type="bondi")
         patonradii = np.array(patonradii)
         patonradii[patonradii == 1.2] = 1.09
 

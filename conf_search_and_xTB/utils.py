@@ -17,7 +17,7 @@ import yaml
 
 from morfeus import BuriedVolume
 from morfeus import Pyramidalization
-from morfeus import ConeAngle
+from morfeus.cone_angle import ConeAngle
 from morfeus import Sterimol
 from morfeus import SASA
 from morfeus import Dispersion
@@ -1037,6 +1037,7 @@ def readXYZ(filename):
     coords=[]
     elements=[]
     lines=infile.readlines()
+    print(lines)
     if len(lines)<3:
         exit("ERROR: no coordinates found in %s/%s"%(os.getcwd(), filename))
     for line in lines[2:]:
@@ -1430,7 +1431,8 @@ def run_morfeus(coords, elements, dummy_positions, moldir, settings, smiles):
     try:
         if len(elements_extended)!=len(coords_extended):
             print("WARNING: ConeAngle calculation got coords and elements with different sizes!")
-        cone_angle = ConeAngle(elements_extended, coords_extended, dummy_idx+1)
+        #cone_angle = ConeAngle(elements_extended, coords_extended, dummy_idx+1)
+        cone_angle = ConeAngle(elements_extended, coords_extended, p_idx+1)
         cone_angle_val = float(cone_angle.cone_angle)
     except:
         print("WARNING: morfeus cone angle failed")
@@ -1711,7 +1713,7 @@ def copy_to_scratch(in_directory):
 
 def goToScratch():
     oldcwd = os.getcwd()
-    scratch_directory = ""
+    scratch_directory = "/scratch/ctser/kraken"
     #make scratch dir, enter scratch dir - save oldcwd
     oldcwd, scratch_directory = copy_to_scratch(oldcwd)
     os.chdir(scratch_directory)

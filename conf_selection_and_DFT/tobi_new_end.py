@@ -3,7 +3,7 @@ import os
 import sys
 import datetime
 import shutil
-sys.path.append("../../")
+sys.path.append("../../../../")
 import pathlib as pl
 from contextlib import suppress
 

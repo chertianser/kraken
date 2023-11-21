@@ -30,7 +30,7 @@ def run_Multiwfn_win(wd,name,ext):
         inputargs = f"12\n2\n-2\n3\n0.25\n0\n7\n-1\n-1\n100\n2\n5\n{name}.wfn\nq\n"
     else:
         inputargs = "12\n2\n-2\n3\n0.25\n0\n7\nq\n"
-    path_to_settings = '/uufs/chpc.utah.edu/common/home/u1209999/PL_workflow/new_org_use/Pint/Multiwfn_3.7_bin_Linux_noGUI/settings.ini'
+    path_to_settings = '/opt/Multiwfn/3.7/settings.ini'
     multiwfn = subprocess.run(f"{command} {name}{ext} -set {path_to_settings}",stdout=subprocess.PIPE, stderr=subprocess.PIPE,encoding="ascii",shell=True,input=inputargs,cwd=wd)
     # a = subprocess.Popen("Multiwfn " + compfile, stdin=subprocess.PIPE,stdout=subprocess.PIPE, stderr=subprocess.STDOUT,cwd=wd,shell=True)
     # subprocess.run("mv", cwd / "vtx.txt", cwd / dir+filename+"_vdw.txt",cwd=wd)
@@ -120,7 +120,7 @@ def P_int_main(name="",directory="./",disp = "d3",promol=False):
                 os.stat(wd/"atomwfn")
             except:
                 os.mkdir(wd/"atomwfn")
-                atomwfn_orig = pl.Path("/uufs/chpc.utah.edu/common/home/u1209999/PL_workflow/new_org_use/Pint/Pint/Multiwfn_3.7_bin_Linux_noGUI/examples/atomwfn")
+                atomwfn_orig = pl.Path("/opt/Multiwfn/3.7/examples/atomwfn")
                 [shutil.copyfile(atomwfn_orig/aof,wd/"atomwfn"/aof) for aof in os.listdir(atomwfn_orig)]
             run_Multiwfn_win_promol(wd,name)
 
@@ -146,7 +146,7 @@ def P_int_main(name="",directory="./",disp = "d3",promol=False):
     try:
         os.stat(wd/(f"{name}_ded_{disp}.txt"))
     except:
-        ded_path = '/uufs/chpc.utah.edu/common/home/u1209999/PL_workflow/new_org_use/Pint'
+        ded_path = '/u/ctser/kraken/conf_selection_and_DFT/Pint'
         t = subprocess.run(f"python {ded_path}/ded.py ./{name}.xyz ./{name}_vtx.txt --charge 0 --disp {disp}",cwd=wd,shell=True)
         
     # read results

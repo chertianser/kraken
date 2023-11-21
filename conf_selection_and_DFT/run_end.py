@@ -9,7 +9,7 @@ import numpy as np
 from utils import *
 
 # Save the path with the new end.py script
-tobi_new_path = Path('/uufs/chpc.utah.edu/common/home/u1209999/PL_workflow/new_org_use/').resolve()
+tobi_new_path = Path('/u/ctser/kraken/conf_selection_and_DFT/').resolve()
 
 
 def run_end(ligand: str) -> None:
@@ -58,7 +58,7 @@ if __name__ == '__main__':
 		ligands = list(np.array_split(all_ligands, batches)[job_id])
 
 	else:
-		ligands = ligands_from_file('/uufs/chpc.utah.edu/common/home/u1209999/PL_workflow/new_org_use/example_ligands.txt')
+		ligands = ligands_from_file('/u/ctser/kraken/conf_selection_and_DFT/PL_workflow/new_org_use/example_ligands.txt')
 
 	# Run over every ligand in parallel
 	#nproc = max((os.cpu_count() - 2, 1))
